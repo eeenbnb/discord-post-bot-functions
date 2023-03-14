@@ -26,18 +26,18 @@ export const checkTwitchFunction = functions.pubsub
       process.env.TWICH_CHECK_USER
     );
 
-    const isStream = await getTwitchStatus();
+    const isStream = await (await getTwitchStatus()).data();
 
     if (streamsPresponse.data.length > 0) {
-      if (!isStream.data().data) {
+      if (!isStream.data) {
         await postDiscord(process.env.TWICH_POST_START_TEXT);
+        await updateTwitchStatus(true);
       }
-      await updateTwitchStatus(true);
     } else {
-      if (isStream.data().data) {
+      if (isStream.data) {
         postDiscord(process.env.TWICH_POST_END_TEXT);
+        await updateTwitchStatus(false);
       }
-      await updateTwitchStatus(false);
     }
     return null;
   });
