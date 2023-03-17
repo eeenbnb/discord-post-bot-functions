@@ -10,6 +10,7 @@ const url = "https://splatoon.caxdb.com/schedule3.cgi";
 
 const getSplatoonTime = functions.pubsub
   .schedule("0 0 * * *")
+  .timeZone("Asia/Tokyo")
   .onRun(async (context) => {
     const respon = await fetch(url);
     const data = await respon.text();

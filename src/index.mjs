@@ -1,6 +1,6 @@
+import { createRequire } from "module";
 import importCheckTwitchFunction from "./schedule/checkTwitchFunction.mjs";
 import importCheckTwitchTokens from "./schedule/checkTwitchTokens.mjs";
-import { createRequire } from "module";
 import importGetSplatoonTime from "./schedule/getSplatoonTime.mjs";
 
 const require = createRequire(import.meta.url);

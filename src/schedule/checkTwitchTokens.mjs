@@ -8,6 +8,7 @@ const functions = require("firebase-functions");
 
 const checkTwitchTokens = functions.pubsub
   .schedule("0 0 * * *")
+  .timeZone("Asia/Tokyo")
   .onRun(async (context) => {
     const tokenResponse = await getToken(
       process.env.TWICH_CLIENT_ID,
