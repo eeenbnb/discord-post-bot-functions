@@ -16,7 +16,7 @@ const getSplatoonTime = functions.pubsub
     const data = await respon.text();
     const { document } = new JSDOM(data).window;
 
-    Array.from(document.body.querySelector("ul").childNodes)
+    const item = Array.from(document.body.querySelector("ul").childNodes)
       .filter((v) => v.textContent !== "\n")
       .map((elm) => {
         const text = elm.textContent;
