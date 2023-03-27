@@ -10,7 +10,6 @@ const updateTwitchStatus = async (status) => {
     .doc("IS_STREAM")
     .set({
       bool: status,
-      data: status,
       startTime: dayjs().format("YYYY-MM-DDThh:mm:ssZ"),
     });
 };

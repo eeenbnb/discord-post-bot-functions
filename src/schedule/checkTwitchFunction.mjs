@@ -14,7 +14,9 @@ const functions = require("firebase-functions");
 const checkTwitchFunction = functions.pubsub
   .schedule("every 1 minutes")
   .onRun(async (context) => {
-    const { token, authorizeToken } = await (await getTwichOAuthToken()).data();
+    const { token, moderatorReadFollowersTokens } = await (
+      await getTwichOAuthToken()
+    ).data();
 
     const streamsPresponse = await getStreams(
       process.env.TWICH_CLIENT_ID,
@@ -32,12 +34,19 @@ const checkTwitchFunction = functions.pubsub
     } else {
       if (isStream.bool) {
         await postDiscord(process.env.TWICH_POST_END_TEXT);
-
-        const items = await getNewUser(authorizeToken, req.query.day);
-        const newUserText = getNewUserText(items);
-        if (newUserText) {
-          await postDiscord(newUserText);
+        try {
+          const items = await getNewUser(
+            moderatorReadFollowersTokens,
+            isStream.startTime
+          );
+          const newUserText = getNewUserText(items);
+          if (newUserText) {
+            await postDiscord(newUserText);
+          }
+        } catch (error) {
+          await postDiscord("新規フォロー取得に失敗しました。");
         }
+
         await updateTwitchStatus(false);
       }
       // await updateTwitchStatus(true);
