@@ -3,6 +3,8 @@ const require = createRequire(import.meta.url);
 const admin = require("firebase-admin");
 
 const getTwitchStatus = async () =>
-  await admin.firestore().collection("twich-status").doc("IS_STREAM").get();
+  await (
+    await admin.firestore().collection("twich-status").doc("IS_STREAM").get()
+  ).data();
 
 export default getTwitchStatus;

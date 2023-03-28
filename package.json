@@ -1,25 +1,10 @@
 {
-  "name": "discord-post-bot-functions",
+  "name": "discord-post-bot",
   "scripts": {
-    "serve": "firebase emulators:start --only functions",
-    "shell": "firebase functions:shell",
-    "start": "npm run shell",
-    "deploy": "firebase deploy --only functions",
-    "logs": "firebase functions:log"
+    "deploy:function": "npm run deploy -w packages/functions"
   },
-  "engines": {
-    "node": "16"
-  },
-  "main": "src/index.mjs",
-  "dependencies": {
-    "dayjs": "^1.11.7",
-    "firebase-admin": "^11.5.0",
-    "firebase-functions": "^4.2.1",
-    "jsdom": "^21.1.1",
-    "node-fetch": "^3.3.0"
-  },
-  "devDependencies": {
-    "firebase-functions-test": "^3.0.0"
-  },
-  "private": true
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }

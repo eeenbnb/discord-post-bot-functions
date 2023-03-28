@@ -14,9 +14,7 @@ const functions = require("firebase-functions");
 const checkTwitchFunction = functions.pubsub
   .schedule("every 1 minutes")
   .onRun(async (context) => {
-    const { token, moderatorReadFollowersTokens } = await (
-      await getTwichOAuthToken()
-    ).data();
+    const { token, moderatorReadFollowersTokens } = await getTwichOAuthToken();
 
     const streamsPresponse = await getStreams(
       process.env.TWICH_CLIENT_ID,
@@ -24,7 +22,7 @@ const checkTwitchFunction = functions.pubsub
       process.env.TWICH_CHECK_USER
     );
 
-    const isStream = await (await getTwitchStatus()).data();
+    const isStream = await getTwitchStatus();
 
     if (streamsPresponse.data.length > 0) {
       if (!isStream.bool) {

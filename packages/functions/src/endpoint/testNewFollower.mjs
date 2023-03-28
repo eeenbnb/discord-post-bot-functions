@@ -7,9 +7,7 @@ import getNewUser from "../util/getNewUser.mjs";
 import getNewUserText from "../util/getNewUserText.mjs";
 
 const testNewFollower = functions.https.onRequest(async (req, res) => {
-  const { moderatorReadFollowersTokens } = await (
-    await getTwichOAuthToken()
-  ).data();
+  const { moderatorReadFollowersTokens } = await getTwichOAuthToken();
   const items = await getNewUser(moderatorReadFollowersTokens, req.query.day);
   const newUserText = getNewUserText(items);
   res.json({ text: newUserText });
