@@ -74,7 +74,7 @@ const getSplatoonTime = functions.pubsub
       return object;
     });
 
-    await postEmbedsDiscord(embeds, 2);
+    await postEmbedsDiscord(embeds, 1);
 
     return null;
   });
