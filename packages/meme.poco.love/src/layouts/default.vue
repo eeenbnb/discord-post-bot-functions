@@ -3,6 +3,8 @@ import { FooterItem } from '~~/.nuxt/components';
 
 <template>
   <MemeHeader />
-  <slot />
+  <MemeContainer>
+    <slot />
+  </MemeContainer>
   <MemeFooter />
 </template>

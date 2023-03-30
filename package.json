@@ -12,5 +12,8 @@
   "private": true,
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "devDependencies": {
+    "sass": "^1.60.0"
+  }
 }
