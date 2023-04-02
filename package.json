@@ -3,6 +3,11 @@
   "scripts": {
     "deploy:function": "npm run deploy -w packages/functions",
     "deploy:hosting": "firebase deploy --only hosting",
+    "functions:serve": "npm run serve -w packages/functions",
+    "functions:shell": "npm run shell -w packages/functions",
+    "functions:start": "npm run start -w packages/functions",
+    "functions:deploy": "npm run deploy -w packages/functions",
+    "functions:logs": "npm run logs -w packages/functions",
     "meme:build": "npm run build -w packages/meme.poco.love",
     "meme:dev": "npm run dev -w packages/meme.poco.love",
     "meme:generate": "npm run generate -w packages/meme.poco.love",
