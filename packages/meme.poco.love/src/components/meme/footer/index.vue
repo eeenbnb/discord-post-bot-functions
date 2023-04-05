@@ -16,6 +16,11 @@ footer {
   background-color: #fce200;
   color: #fff;
 
+  position: relative;
+  z-index: 100;
+
+  box-sizing: border-box;
+
   .copylight {
     padding: 0 16px;
     font-size: 12px;

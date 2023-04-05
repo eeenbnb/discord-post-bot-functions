@@ -1,6 +1,6 @@
 [
   {
-    "origin": ["localhost", "meme.poco.love"],
+    "origin": ["localhost", "https://meme.poco.love"],
     "method": ["GET"],
     "maxAgeSeconds": 3600
   }

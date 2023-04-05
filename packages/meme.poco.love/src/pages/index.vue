@@ -4,12 +4,17 @@ const { data } = useFetch<videos>("https://firebasestorage.googleapis.com/v0/b/d
 </script>
 
 <template>
-  <ClientOnly>
-    <MemeSectionTitle>
-      最新の配信一覧
-    </MemeSectionTitle>
-    <MemeItemWrapper>
-      <MemeVideoItem v-for="(item, index) in data" :key="index" :item="item"></MemeVideoItem>
-    </MemeItemWrapper>
-  </ClientOnly>
+  <!--  -->
+  <MemeSectionTitle>
+    最新の配信一覧
+  </MemeSectionTitle>
+  <MemeItemWrapper>
+    <MemeVideoItem v-for="(item, index) in data" :key="index" :item="item"></MemeVideoItem>
+  </MemeItemWrapper>
+
+  <!--  -->
+  <MemeSectionTitle>
+    Twitter
+  </MemeSectionTitle>
+  <MemeTwitter></MemeTwitter>
 </template>

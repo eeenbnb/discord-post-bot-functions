@@ -19,6 +19,8 @@ header {
   top: 0;
   z-index: 10000;
 
+  filter: drop-shadow(0 0px 5px rgba(0, 0, 0, .25));
+
   .title {
     padding: 0 16px;
     font-size: 20px;
