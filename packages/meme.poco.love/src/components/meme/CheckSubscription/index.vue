@@ -1,19 +1,30 @@
-<script lang="ts" setup>
+<script lang="tsx" setup>
+import MemeCheckSubscriptionGetSubscriptions from "./getSubscriptions"
+const runtimeConfig = useRuntimeConfig();
 const item = useTwitchToken();
 
-
-const { data: user } = useFetch<any>("https://api.twitch.tv/helix/users", {
+const { data: user } = await useFetch<any>("https://api.twitch.tv/helix/users", {
   headers: {
     Authorization: `Bearer ${item.value}`,
-    "Client-ID": "3pwcafw0g03kh5uq8aq4ysfnteegab",
-  }
-})
+    "Client-ID": runtimeConfig.public.TWICH_CLIENT_ID,
+  },
+});
+
+const Components = () => {
+  return (
+    <div>
+      {user && (
+        <MemeCheckSubscriptionGetSubscriptions
+          user-id={user.value.data[0].id}
+        > </MemeCheckSubscriptionGetSubscriptions>
+      )
+      }
+    </div>
+  );
+}
 
 </script>
 
 <template>
-  <template v-if="user">
-    <MemeCheckSubscriptionGetSubscriptions :user-id="user.data[0].id">
-    </MemeCheckSubscriptionGetSubscriptions>
-  </template>
+  <Components></Components>
 </template>
