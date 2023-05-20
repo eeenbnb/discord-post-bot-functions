@@ -9,6 +9,8 @@ import importTestNewSubscrber from "./endpoint/testNewSubscrber.mjs";
 import importGetTwitchChannelReadSubscriptionsTokensEndpoint from "./endpoint/getTwitchChannelReadSubscriptionsTokens.mjs";
 import importGetTwitchUserVideos from "./endpoint/getTwitchUserVideos.mjs";
 import importGetTwitchUserSubscriber from "./endpoint/getTwitchUserSubscriber.mjs";
+import importPostEventSubCallback from "./endpoint/postEventSubCallback.mjs";
+import importGetAppToken from "./endpoint/getAppToken/index.mjs";
 
 const require = createRequire(import.meta.url);
 const admin = require("firebase-admin");
@@ -26,6 +28,8 @@ export const getTwitchModeratorReadFollowersTokensEndpoint =
 export const getTwitchChannelReadSubscriptionsTokensEndpoint =
   importGetTwitchChannelReadSubscriptionsTokensEndpoint;
 export const getTwitchUserVideos = importGetTwitchUserVideos(admin);
+export const postEventSubCallback = importPostEventSubCallback;
+export const getAppToken = importGetAppToken;
 
 export const testNewFollower = importTestNewFollower;
 export const testNewSubscrber = importTestNewSubscrber;

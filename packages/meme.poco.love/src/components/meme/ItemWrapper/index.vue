@@ -13,7 +13,7 @@
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 16px;
+  gap: 30px 20px;
   box-sizing: border-box;
 
   @media screen and (max-width:map-get(bp.$bp, "md")) {

@@ -6,11 +6,13 @@ const logout = () => {
 </script>
 
 <template>
-  <template v-if="item.length == 0">
-    <MemeTwitchLogin></MemeTwitchLogin>
-  </template>
-  <template v-if="item.length > 0">
-    <MemeCheckSubscription></MemeCheckSubscription>
-    <button @click="logout">logout</button>
-  </template>
+  <NuxtLayout name="old">
+    <template v-if="item.length == 0">
+      <MemeTwitchLogin></MemeTwitchLogin>
+    </template>
+    <template v-if="item.length > 0">
+      <MemeCheckSubscription></MemeCheckSubscription>
+      <button @click="logout">logout</button>
+    </template>
+  </NuxtLayout>
 </template>
