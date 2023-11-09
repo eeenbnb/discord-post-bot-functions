@@ -38,8 +38,7 @@ const checkTwitchFunction = functions.pubsub
         if (isStream[user.checkUser].isStream) {
           await postDiscordWithUrl(user.postEndText, user.webhookUrl);
 
-          if (user.checkUser == "meme_poco") {
-            // new follor
+          if (user.moderatorReadFollowersTokens !== "") {
             try {
               await checkNewFollowers(user, isStream);
             } catch (error) {
@@ -48,8 +47,9 @@ const checkTwitchFunction = functions.pubsub
                 user.webhookUrl
               );
             }
+          }
 
-            // new subscriber
+          if (user.channelReadSubscriptionsTokens !== "") {
             try {
               const items = await getAllSubscriber(
                 user.channelReadSubscriptionsTokens
@@ -57,14 +57,15 @@ const checkTwitchFunction = functions.pubsub
               const { users: oldSubscribersIdList } =
                 await getTwitchSubscriber();
               const newSubscriber = items.filter(
-                (v) => oldSubscribersIdList.indexOf(v.user_login) < 0
+                (v) =>
+                  oldSubscribersIdList[user.checkUser].indexOf(v.user_login) < 0
               );
               const newSubscriberText = getNewSubscriberText(newSubscriber);
               if (newSubscriberText) {
                 await postDiscord(newSubscriberText);
 
                 const subscribersIdList = items.map((v) => v.user_login);
-                await updateTwitchSubscriber(subscribersIdList);
+                await updateTwitchSubscriber(subscribersIdList, user.checkUser);
               }
             } catch (error) {
               await postDiscord("新規サブスク取得に失敗しました。");

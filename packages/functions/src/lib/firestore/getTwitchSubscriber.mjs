@@ -7,7 +7,7 @@ const getTwitchSubscriber = async () =>
     await admin
       .firestore()
       .collection("twich-status")
-      .doc("subscriber-users")
+      .doc("subscriber-user-users")
       .get()
   ).data();
 

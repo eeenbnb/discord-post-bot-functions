@@ -1,4 +1,5 @@
 import { createRequire } from "module";
+import getTwichOAuthToken from "./getTwichOAuthToken.mjs";
 const require = createRequire(import.meta.url);
 const admin = require("firebase-admin");
 
